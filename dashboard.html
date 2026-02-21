@@ -30,39 +30,50 @@
     </button>
   </nav>
 
-  <!-- Sidebar Drawer -->
-  <aside id="drawer" class="fixed top-0 left-0 w-64 h-full bg-white/10 backdrop-blur-md transform -translate-x-full transition-transform z-50 p-6 space-y-6 shadow-xl">
-    <button id="closeDrawer" class="absolute top-4 right-4 text-white text-2xl">
-      <i class="fas fa-times"></i>
-    </button>
-    <ul class="space-y-6 text-white">
-      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
-        <a href="video.html" class="flex items-center gap-3 w-full">
-          <i class="fas fa-video"></i> Video Lessons
-        </a>
-      </li>
-      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
-        <a href="notes.html" class="flex items-center gap-3 w-full">
-          <i class="fas fa-book"></i> Textbooks
-        </a>
-      </li>
-      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
-        <a href="question.html" class="flex items-center gap-3 w-full">
-          <i class="fas fa-file-alt"></i> Question Papers
-        </a>
-      </li>
-      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
-        <a href="live.html" class="flex items-center gap-3 w-full">
-          <i class="fas fa-broadcast-tower"></i> Live Sessions
-        </a>
-      </li>
-      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
-        <a href="assist.html" class="flex items-center gap-3 w-full">
-          <i class="fas fa-robot"></i> AI Assistant
-        </a>
-      </li>
-    </ul>
-  </aside>
+<!-- Sidebar Drawer -->
+<aside id="drawer" class="fixed top-0 left-0 w-64 h-full bg-white/10 backdrop-blur-md transform -translate-x-full transition-transform z-50 p-6 space-y-6 shadow-xl">
+  <button id="closeDrawer" class="absolute top-4 right-4 text-white text-2xl">
+    <i class="fas fa-times"></i>
+  </button>
+  <ul class="space-y-6 text-white">
+    <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+      <a href="video.html" class="flex items-center gap-3 w-full">
+        <i class="fas fa-video"></i> Video Lessons
+      </a>
+    </li>
+
+    <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+      <a href="notes.html" class="flex items-center gap-3 w-full">
+        <i class="fas fa-book"></i> Textbooks
+      </a>
+    </li>
+
+    <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+      <a href="question.html" class="flex items-center gap-3 w-full">
+        <i class="fas fa-file-alt"></i> Question Papers
+      </a>
+    </li>
+
+    <!-- NEW Virtual Lab Section -->
+    <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+      <a href="virtuallabs.html" class="flex items-center gap-3 w-full">
+        <i class="fas fa-flask"></i> Virtual Lab
+      </a>
+    </li>
+
+    <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+      <a href="live.html" class="flex items-center gap-3 w-full">
+        <i class="fas fa-broadcast-tower"></i> Live Sessions
+      </a>
+    </li>
+
+    <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+      <a href="assist.html" class="flex items-center gap-3 w-full">
+        <i class="fas fa-robot"></i> AI Assistant
+      </a>
+    </li>
+  </ul>
+</aside>
 
   <!-- Overlay -->
   <div id="overlay" class="fixed inset-0 bg-black/50 hidden z-40"></div>
@@ -78,34 +89,44 @@
     <!-- Grids -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-      <!-- Maths -->
-      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
-        <i class="fas fa-square-root-alt text-5xl mb-3 text-white"></i>
-        <h2 class="font-bold text-white text-lg mb-1">Mathematics</h2>
-        <p class="text-white/80 text-sm">Virtual tutoring in Maths with structured lessons and practice.</p>
-      </div>
+<!-- Virtual Lab -->
+<div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+  <a href="virtuallab.html" class="block w-full h-full">
+    <i class="fas fa-flask text-5xl mb-3 text-white"></i>
+    <h2 class="font-bold text-white text-lg mb-1">Virtual Lab</h2>
+    <p class="text-white/80 text-sm">
+      Explore interactive 3D simulations for Mathematics, Physics and Chemistry.
+    </p>
+  </a>
+</div>
 
-      <!-- Life & Physical Sciences -->
-      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
-        <i class="fas fa-flask text-5xl mb-3 text-white"></i>
-        <h2 class="font-bold text-white text-lg mb-1">Life & Physical Sciences</h2>
-        <p class="text-white/80 text-sm">Comprehensive guidance and resources for Science subjects.</p>
-      </div>
+<!-- Maths -->
+<div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+  <i class="fas fa-square-root-alt text-5xl mb-3 text-white"></i>
+  <h2 class="font-bold text-white text-lg mb-1">Mathematics</h2>
+  <p class="text-white/80 text-sm">Virtual tutoring in Maths with structured lessons and practice.</p>
+</div>
 
-      <!-- Computer & Technology -->
-      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
-        <i class="fas fa-laptop-code text-5xl mb-3 text-white"></i>
-        <h2 class="font-bold text-white text-lg mb-1">Computer & Technology (CAT)</h2>
-        <p class="text-white/80 text-sm">Structured learning toolkit to improve performance in Computer Technology.</p>
-      </div>
+<!-- Life & Physical Sciences -->
+<div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+  <i class="fas fa-flask text-5xl mb-3 text-white"></i>
+  <h2 class="font-bold text-white text-lg mb-1">Life & Physical Sciences</h2>
+  <p class="text-white/80 text-sm">Comprehensive guidance and resources for Science subjects.</p>
+</div>
 
-      <!-- AI Assistant -->
-      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
-        <i class="fas fa-robot text-5xl mb-3 text-white"></i>
-        <h2 class="font-bold text-white text-lg mb-1">AI Assistant</h2>
-        <p class="text-white/80 text-sm">24/7 AI support for guidance, homework help, and questions.</p>
-      </div>
+<!-- Computer & Technology -->
+<div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+  <i class="fas fa-laptop-code text-5xl mb-3 text-white"></i>
+  <h2 class="font-bold text-white text-lg mb-1">Computer & Technology (CAT)</h2>
+  <p class="text-white/80 text-sm">Structured learning toolkit to improve performance in Computer Technology.</p>
+</div>
 
+<!-- AI Assistant -->
+<div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+  <i class="fas fa-robot text-5xl mb-3 text-white"></i>
+  <h2 class="font-bold text-white text-lg mb-1">AI Assistant</h2>
+  <p class="text-white/80 text-sm">24/7 AI support for guidance, homework help, and questions.</p>
+</div>
       <!-- Videos -->
       <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
         <i class="fas fa-video text-5xl mb-3 text-white"></i>
