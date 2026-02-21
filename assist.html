@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Assistant Terms - Master Science Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-sky-400 via-blue-700 to-[#0a1a33] p-4 flex flex-col items-center">
+
+<!-- Top Banner -->
+<div class="w-full h-[300px] bg-white/20 backdrop-blur-md shadow-lg flex items-center justify-center rounded-none mb-6">
+  <img src="cool.jpg" alt="BlackLogic + OpenAI" class="h-[180px] object-contain animate-breathe"/>
+</div>
+
+<!-- Breathing Animation -->
+<style>
+  @keyframes breathe { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
+  .animate-breathe { animation: breathe 4s ease-in-out infinite; }
+  .form-input { background-color: rgba(255,255,255,0.2); backdrop-blur: 5px; border-radius: 0.5rem; padding: 0.5rem 1rem; color: white; width: 100%; margin-bottom: 1rem; }
+</style>
+
+<!-- Parent Form -->
+<div id="parentFormContainer" class="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl max-w-3xl w-full p-8 mb-6">
+  <h1 class="text-2xl font-bold mb-4 text-white">Parent Consent</h1>
+  <p class="text-white/90 mb-4">Date: <span id="currentDate"></span> | Time: <span id="currentTime"></span></p>
+
+  <form id="parentForm" class="space-y-4">
+    <input type="text" id="initials" placeholder="Initials" class="form-input" required>
+    <input type="text" id="surname" placeholder="Surname" class="form-input" required>
+
+    <p class="text-white font-semibold mb-2">Parent Terms & Conditions (5)</p>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="pTerm1"/>
+        <label for="pTerm1" class="text-white text-sm">I consent for my child to access the AI Assistant.</label>
+      </div>
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="pTerm2"/>
+        <label for="pTerm2" class="text-white text-sm">I understand AI may provide incorrect information.</label>
+      </div>
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="pTerm3"/>
+        <label for="pTerm3" class="text-white text-sm">I agree to follow all usage rules set by BlackLogic Technologies.</label>
+      </div>
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="pTerm4"/>
+        <label for="pTerm4" class="text-white text-sm">I will guide my child on responsible AI usage.</label>
+      </div>
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="pTerm5"/>
+        <label for="pTerm5" class="text-white text-sm">I will not hold BlackLogic Technologies responsible for misuse.</label>
+      </div>
+    </div>
+
+    <button type="submit" id="submitParent" class="w-full bg-white text-gray-800 font-semibold py-3 rounded-xl shadow-lg disabled:opacity-50" disabled>Submit</button>
+  </form>
+</div>
+
+<!-- Student Form (AI Terms) -->
+<div id="aiTermsContainer" class="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl max-w-3xl w-full p-8 hidden">
+  <h1 class="text-2xl font-bold mb-6 text-white">AI Assistant Terms & Conditions</h1>
+  <form id="termsForm" class="space-y-4">
+    <p class="text-white font-semibold mb-2">Student Terms & Conditions (5)</p>
+    <div class="space-y-2">
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="term1"/>
+        <label for="term1" class="text-white text-sm">I will use the AI only for educational purposes.</label>
+      </div>
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="term2"/>
+        <label for="term2" class="text-white text-sm">I will not cheat or copy assignments using AI.</label>
+      </div>
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="term3"/>
+        <label for="term3" class="text-white text-sm">I will respect intellectual property and citations.</label>
+      </div>
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="term4"/>
+        <label for="term4" class="text-white text-sm">I will not misuse AI for harmful purposes.</label>
+      </div>
+      <div class="flex items-start gap-3">
+        <input type="checkbox" class="w-5 h-5 accent-blue-600 mt-1" id="term5"/>
+        <label for="term5" class="text-white text-sm">I will maintain respectful language when interacting with AI.</label>
+      </div>
+    </div>
+
+    <button type="button" id="enterBtn" class="w-full bg-white text-gray-800 font-semibold py-3 rounded-xl shadow-lg mt-6 disabled:opacity-50" disabled>
+      Enter AI Assistant
+    </button>
+  </form>
+</div>
+
+<script>
+  // Current date & time
+  const now = new Date();
+  document.getElementById('currentDate').textContent = now.toLocaleDateString();
+  document.getElementById('currentTime').textContent = now.toLocaleTimeString();
+
+  // Enable parent submit only if all 5 checked
+  const parentCheckboxes = document.querySelectorAll('#parentForm input[type="checkbox"]');
+  const submitParent = document.getElementById('submitParent');
+
+  parentCheckboxes.forEach(cb => cb.addEventListener('change', () => {
+    submitParent.disabled = ![...parentCheckboxes].every(c => c.checked);
+  }));
+
+  document.getElementById('parentForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const initials = document.getElementById('initials').value.trim();
+    const surname = document.getElementById('surname').value.trim();
+
+    if(initials && surname){
+      const text = `Parent Consent:%0AInitials: ${initials}%0ASurname: ${surname}`;
+      const whatsappURL = `https://api.whatsapp.com/send?phone=27606614909&text=${encodeURIComponent(text)}`;
+      window.open(whatsappURL, '_blank');
+    }
+
+    document.getElementById('parentFormContainer').style.display = 'none';
+    document.getElementById('aiTermsContainer').classList.remove('hidden');
+  });
+
+  // Enable AI terms button
+  const aiCheckboxes = document.querySelectorAll('#termsForm input[type="checkbox"]');
+  const enterBtn = document.getElementById('enterBtn');
+
+  aiCheckboxes.forEach(cb => cb.addEventListener('change', () => {
+    enterBtn.disabled = ![...aiCheckboxes].every(c => c.checked);
+  }));
+
+  enterBtn.addEventListener('click', () => {
+    enterBtn.textContent = "Loading...";
+    setTimeout(() => { window.location.href = "https://chat.openai.com/"; }, 1000);
+  });
+</script>
+
+</body>
+</html>

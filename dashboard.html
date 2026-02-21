@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Master Science Hub Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* Hover glow effect for cards */
+    .hover-glow:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25);
+    }
+    .transition-glow { transition: all 0.3s ease-in-out; }
+  </style>
+</head>
+
+<body class="bg-gray-900 min-h-screen flex flex-col">
+
+  <!-- Top Navbar -->
+  <nav class="flex items-center justify-between p-4 bg-white/10 backdrop-blur-md shadow-md z-20 relative">
+    <h1 class="text-white font-bold text-xl">Master Science Hub</h1>
+    <button id="hamburger" class="text-white text-2xl md:hidden">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- Sidebar Drawer -->
+  <aside id="drawer" class="fixed top-0 left-0 w-64 h-full bg-white/10 backdrop-blur-md transform -translate-x-full transition-transform z-50 p-6 space-y-6 shadow-xl">
+    <button id="closeDrawer" class="absolute top-4 right-4 text-white text-2xl">
+      <i class="fas fa-times"></i>
+    </button>
+    <ul class="space-y-6 text-white">
+      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+        <a href="video.html" class="flex items-center gap-3 w-full">
+          <i class="fas fa-video"></i> Video Lessons
+        </a>
+      </li>
+      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+        <a href="notes.html" class="flex items-center gap-3 w-full">
+          <i class="fas fa-book"></i> Textbooks
+        </a>
+      </li>
+      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+        <a href="question.html" class="flex items-center gap-3 w-full">
+          <i class="fas fa-file-alt"></i> Question Papers
+        </a>
+      </li>
+      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+        <a href="live.html" class="flex items-center gap-3 w-full">
+          <i class="fas fa-broadcast-tower"></i> Live Sessions
+        </a>
+      </li>
+      <li class="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-400">
+        <a href="assist.html" class="flex items-center gap-3 w-full">
+          <i class="fas fa-robot"></i> AI Assistant
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black/50 hidden z-40"></div>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-8 relative">
+
+    <!-- Banner -->
+    <div class="h-[300px] w-full rounded-3xl shadow-xl mb-8 overflow-hidden">
+      <img src="master.png" alt="Science Banner" class="w-full h-full object-cover">
+    </div>
+
+    <!-- Grids -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+      <!-- Maths -->
+      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+        <i class="fas fa-square-root-alt text-5xl mb-3 text-white"></i>
+        <h2 class="font-bold text-white text-lg mb-1">Mathematics</h2>
+        <p class="text-white/80 text-sm">Virtual tutoring in Maths with structured lessons and practice.</p>
+      </div>
+
+      <!-- Life & Physical Sciences -->
+      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+        <i class="fas fa-flask text-5xl mb-3 text-white"></i>
+        <h2 class="font-bold text-white text-lg mb-1">Life & Physical Sciences</h2>
+        <p class="text-white/80 text-sm">Comprehensive guidance and resources for Science subjects.</p>
+      </div>
+
+      <!-- Computer & Technology -->
+      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+        <i class="fas fa-laptop-code text-5xl mb-3 text-white"></i>
+        <h2 class="font-bold text-white text-lg mb-1">Computer & Technology (CAT)</h2>
+        <p class="text-white/80 text-sm">Structured learning toolkit to improve performance in Computer Technology.</p>
+      </div>
+
+      <!-- AI Assistant -->
+      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+        <i class="fas fa-robot text-5xl mb-3 text-white"></i>
+        <h2 class="font-bold text-white text-lg mb-1">AI Assistant</h2>
+        <p class="text-white/80 text-sm">24/7 AI support for guidance, homework help, and questions.</p>
+      </div>
+
+      <!-- Videos -->
+      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+        <i class="fas fa-video text-5xl mb-3 text-white"></i>
+        <h2 class="font-bold text-white text-lg mb-1">Videos</h2>
+        <p class="text-white/80 text-sm">Curated video lessons for every subject and grade.</p>
+      </div>
+
+      <!-- Notes -->
+      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+        <i class="fas fa-book text-5xl mb-3 text-white"></i>
+        <h2 class="font-bold text-white text-lg mb-1">Notes</h2>
+        <p class="text-white/80 text-sm">Downloadable notes and textbooks to reinforce learning.</p>
+      </div>
+
+      <!-- Q/A Papers -->
+      <div class="bg-white/10 rounded-2xl p-5 shadow-lg hover-glow transition-glow cursor-pointer text-center">
+        <i class="fas fa-file-alt text-5xl mb-3 text-white"></i>
+        <h2 class="font-bold text-white text-lg mb-1">Q/A Papers</h2>
+        <p class="text-white/80 text-sm">Access past question and answer papers for practice.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- JS for Drawer -->
+  <script>
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+    document.getElementById('hamburger').addEventListener('click', () => {
+      drawer.classList.remove('-translate-x-full');
+      overlay.classList.remove('hidden');
+    });
+    document.getElementById('closeDrawer').addEventListener('click', () => {
+      drawer.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    });
+    overlay.addEventListener('click', () => {
+      drawer.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    });
+  </script>
+
+</body>
+</html>
